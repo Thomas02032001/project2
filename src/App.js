@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+// instead of redux we are using the components
+// components are provided by the react itself
+
+import { Route, Routes, Switch } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import AllMeetUps from "./pages/AllMeetUps";
+import Favourites from "./pages/Favourites";
+import NewMeetUp from "./pages/NewMeetUp";
 
 function App() {
+  // EX: -  localhost:3000/favourites
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Routes>
+        {/* switch is older version and it is not supporting so we are using the routes here and "exact" is used to match exactly with the path */}
+        <Route path="/" element={<AllMeetUps />} exact={true} />
+        <Route path="/favourites" element={<Favourites />} exact={true} />
+        <Route path="/new-meet" element={<NewMeetUp />} exact={true} />
+      </Routes>
+    </Layout>
   );
 }
 
